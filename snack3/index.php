@@ -14,6 +14,14 @@ Creare un array di array. Ogni array figlio avrà come chiave una data in questo
 
 <div>
 
+<style>
+
+    div {
+        margin-bottom: 20px;
+    }
+
+</style>
+
     <?php 
 
         $posts = [
@@ -56,11 +64,18 @@ Creare un array di array. Ogni array figlio avrà come chiave una data in questo
             ]
         ];
 
-        for ($i = 0; $i < count($posts); $i++){
-            echo $posts['10/01/2019'][0]['author'];
-        }
 
-        
+        $keys = array_keys($posts);
+
+        for($i = 0; $i < count($keys); $i++){
+            $key = $keys[$i];
+
+            for($x = 0; $x < count($posts[$key]); $x++){
+                $post = $posts[$key][$x];
+
+                echo "<p>" . $key . ' ' . $post['title'] . $post['author'] . $post['text'] . "</p>";
+            }
+        }
 
     ?>
 
